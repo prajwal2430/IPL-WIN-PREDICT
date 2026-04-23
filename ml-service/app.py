@@ -173,6 +173,7 @@ def build_commentary(batting, bowling, bat_prob, runs_left, balls_left, wickets)
     return " ".join(lines)
 
 
+load_models()
+
 if __name__ == '__main__':
-    load_models()
     app.run(host='0.0.0.0', port=5001, debug=True)

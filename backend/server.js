@@ -16,6 +16,7 @@ connectDB();
 // Routes
 app.use('/api/predict', require('./routes/predict'));
 app.use('/api/meta', require('./routes/meta'));
+app.use('/api/matches', require('./routes/matches'));
 
 // Health check
 app.get('/health', (req, res) => res.json({ status: 'ok', service: 'IPL Prediction Backend' }));
@@ -29,6 +30,11 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: err.message });
 });
 
-app.listen(PORT, () => {
-  console.log(`[Server] Running on http://localhost:${PORT}`);
-});
+// Start server only if not in Vercel/Serverless environment
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`[Server] Running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
