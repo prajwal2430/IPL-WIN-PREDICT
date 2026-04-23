@@ -1,0 +1,40 @@
+.prediction-grid {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.span-2 { grid-column: span 2; }
+
+.empty-state-card {
+  height: 500px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; color: var(--text-secondary);
+  border-style: dashed; border-width: 2px;
+}
+
+.summary-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.sum-item {
+  background: var(--bg-primary); padding: 16px; border-radius: var(--radius);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.sum-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+.sum-val { font-size: 20px; font-weight: 800; color: var(--accent); }
+
+.commentary-text {
+  font-size: 15px; line-height: 1.8; color: var(--text-secondary);
+  border-left: 4px solid var(--accent); padding-left: 20px;
+}
+
+@media (max-width: 1100px) {
+  .prediction-grid { grid-template-columns: 1fr; }
+  .prediction-form-card { max-width: 600px; margin: 0 auto; }
+}
+
+@media (max-width: 640px) {
+  .prediction-form-card .grid-2 { grid-template-columns: 1fr; }
+  .prediction-form-card .span-2 { grid-column: span 1; }
+}

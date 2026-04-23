@@ -1,0 +1,7 @@
+.model-info-box {
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+}
+.model-info-box h4 { font-size: 18px; font-weight: 800; }
