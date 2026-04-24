@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
 const router = express.Router();
 const axios = require('axios');
 const Prediction = require('../models/Prediction');
@@ -28,7 +29,17 @@ router.post('/', async (req, res) => {
     // Persist to MongoDB (non-blocking)
     try {
       await Prediction.create({
-        ...inputData,
+        batting_team: inputData.batting_team,
+        bowling_team: inputData.bowling_team,
+        venue: inputData.venue,
+        toss_winner: inputData.toss_winner,
+        toss_decision: inputData.toss_decision,
+        current_score: inputData.team_runs,
+        wickets: inputData.team_wicket,
+        balls_left: inputData.balls_left,
+        runs_left: inputData.runs_left,
+        crr: inputData.crr,
+        rrr: inputData.rrr,
         model_used: prediction.model_used,
         batting_win_prob: prediction.batting_win_prob,
         bowling_win_prob: prediction.bowling_win_prob,

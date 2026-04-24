@@ -1,6 +1,11 @@
-require('dotenv').config();
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
+const dns = require('node:dns');
+
+// Fix for querySrv ECONNREFUSED with MongoDB Atlas
+dns.setDefaultResultOrder('ipv4first');
+
 const connectDB = require('./config/db');
 
 const app = express();
